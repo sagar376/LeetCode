@@ -6,7 +6,7 @@ class Solution {
         int j=n-1;
         int k=m+n-1;
         
-        System.out.print(m+""+nums1.length);
+        // System.out.print(m+""+nums1.length);
         
         // if(m==0)
         // {

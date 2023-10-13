@@ -32,8 +32,8 @@ class Solution {
     //     return arr;
     // }
         int[] prefix = new int[nums.length];
-        int[] postfix=new int[nums.length];
-        int left =1 ; int right=1;
+        //int[] postfix=new int[nums.length];
+        int left =1 ; int product=1;
         prefix[0]=left;
         for(int i=1;i<nums.length;i++)
         {    
@@ -41,19 +41,18 @@ class Solution {
              prefix[i]=left*prefix[i-1];
         }
         //System.out.println(Arrays.toString(prefix));
-        postfix[nums.length-1]=1;
+        
         for(int i=nums.length-2;i>=0;i--)
         {
-            right=nums[i+1];
-            postfix[i]=right*postfix[i+1];
+            
+             product*=nums[i+1];
+            prefix[i]=prefix[i]*product;
+           
         }
         //System.out.println(Arrays.toString(postfix));
-        for(int i=0;i<nums.length;i++)
-        {
-            nums[i]=prefix[i]*postfix[i];
-        }
+
         
-        return nums;
+        return prefix;
     }
     
         

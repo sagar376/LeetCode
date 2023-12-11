@@ -24,3 +24,6 @@ class Solution {
       return candidate;
     }
 }
+
+// https://leetcode.com/problems/majority-element/discuss/3676530/3-Method's-oror-Beats-100-oror-C++-oror-JAVA-oror-PYTHON-oror-Beginner-Friendly
+//READ above comment fpr detailed explaination

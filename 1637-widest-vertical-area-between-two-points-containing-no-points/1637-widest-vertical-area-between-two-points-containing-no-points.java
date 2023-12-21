@@ -11,9 +11,9 @@ class Solution {
         Arrays.sort(xAxis);
         //System.out.print(Arrays.toString(xAxis));
         
-        for(int i=0;i<size-1;i++)
+        for(int i=size-1;i>0;i--)
         {
-            max=Math.max(max,Math.abs(xAxis[i]-xAxis[i+1]));
+            max=Math.max(max,(xAxis[i]-xAxis[i-1]));
         }
         return max;
     }

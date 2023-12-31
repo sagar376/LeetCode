@@ -29,6 +29,8 @@ class Solution {
             {
                 TreeNode cur=level.poll();
                 if(i==0)result.add(cur.val);
+                // here we are adding right first unlike left in neetcode video solution have a check
+                //pe and paper work will give intuition
                 if(cur.right!=null)level.offer(cur.right);
                 if(cur.left!=null)level.offer(cur.left);
             }

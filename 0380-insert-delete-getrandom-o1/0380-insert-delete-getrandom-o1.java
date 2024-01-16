@@ -22,30 +22,39 @@ class RandomizedSet {
     }
     
     public int getRandom() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(set.size());
+        //Using Array
+        Integer[] rand= set.toArray(new Integer[set.size()]);
+        
+        //rand=set.toArray();
+        
+        Random rdm=new Random();
+        
+        return rand[rdm.nextInt(set.size())];
+        
+//         Random random = new Random();
+//         int randomNumber = random.nextInt(set.size());
         
         
-        Iterator<Integer> iterator = set.iterator(); 
+//         Iterator<Integer> iterator = set.iterator(); 
   
-        int currentIndex = 0; 
-        int randomElement = 0; 
+//         int currentIndex = 0; 
+//         int randomElement = 0; 
   
-        // iterate the HashSet 
-        while (iterator.hasNext()) { 
+//         // iterate the HashSet 
+//         while (iterator.hasNext()) { 
   
-            randomElement = iterator.next(); 
+//             randomElement = iterator.next(); 
   
-            // if current index is equal to random number 
-            if (currentIndex == randomNumber) 
-                return randomElement; 
+//             // if current index is equal to random number 
+//             if (currentIndex == randomNumber) 
+//                 return randomElement; 
   
-            // increase the current index 
-            currentIndex++; 
-        } 
+//             // increase the current index 
+//             currentIndex++; 
+//         } 
   
-        return randomElement; 
-        //return set.stream().findFirst().get();
+//         return randomElement; 
+        
         
     }
 }

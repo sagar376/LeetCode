@@ -20,7 +20,7 @@ class Solution {
         }
         for(int i=index;i<n;i++)
         {
-            if(i>index && arr[i]==arr[i-1])
+            if(i>index && arr[i]==arr[i-1]) /// very important step 
             {
                 continue;
             }

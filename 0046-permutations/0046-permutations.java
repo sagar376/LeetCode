@@ -6,25 +6,25 @@ class Solution {
         boolean[] used=new boolean[nums.length];
         int size=nums.length;
         
-        helper(0,answer,ds,size,nums,used);
+        helper(answer,ds,nums,used);
         
         return answer;
         
     }
-    public void helper(int index,List<List<Integer>> answer,List<Integer> ds,int n,int[] nums,boolean[] used)
+    public void helper(List<List<Integer>> answer,List<Integer> ds,int[] nums,boolean[] used)
     {
-        if(ds.size()==n)
+        if(ds.size()==nums.length)
         {
             answer.add(new ArrayList<>(ds));
             return;
         }
-        for(int i=0;i<n;i++)
+        for(int i=0;i<nums.length;i++)
         {
             if(used[i])
                 continue;
             ds.add(nums[i]);
             used[i]=true;
-            helper(i+1,answer,ds,n,nums,used);
+            helper(answer,ds,nums,used);
             used[i]=false;
             ds.remove(ds.size()-1);
         }

@@ -12,6 +12,9 @@
 public class Solution {
     public boolean hasCycle(ListNode head) {
 
+        //retry this again
+
+
         if(head==null)
         return false;
         ListNode fast=new ListNode();

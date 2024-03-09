@@ -20,7 +20,7 @@ class Solution {
         int first=0;
         int second=0;
 
-        while(first<nums1.length || second<nums2.length )
+        while(first<nums1.length && second<nums2.length )
         {
             if(nums1[first]==nums2[second])
             {

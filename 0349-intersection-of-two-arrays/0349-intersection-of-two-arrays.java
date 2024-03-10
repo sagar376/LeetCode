@@ -24,5 +24,8 @@ class Solution {
             res[i]=result.get(i);
         }
         return res;
+
+        //  // Convert to int array and result the result
+        // return result.stream().mapToInt(i->i).toArray();
     }
 }

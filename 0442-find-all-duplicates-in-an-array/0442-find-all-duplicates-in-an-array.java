@@ -5,13 +5,18 @@ class Solution {
 
         for(int i=0;i<nums.length;i++)
         {
-            if(freq[nums[i]]>0)
+            // if(freq[nums[i]]>0)
+            // {
+            //     ans.add(nums[i]);
+            // }
+            // else
+            // {
+            //   ++freq[nums[i]];  
+            // }
+            freq[nums[i]]++;
+            if(freq[nums[i]]>1)
             {
                 ans.add(nums[i]);
-            }
-            else
-            {
-              ++freq[nums[i]];  
             }
         }
         

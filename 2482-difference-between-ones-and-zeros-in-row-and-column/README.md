@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column/">2482. Difference Between Ones and Zeros in Row and Column</a></h2><h3>Medium</h3><hr><div><p>You are given a <strong>0-indexed</strong> <code>m x n</code> binary matrix <code>grid</code>.</p>
+<h2><a href="https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column">2482. Difference Between Ones and Zeros in Row and Column</a></h2><h3>Medium</h3><hr><p>You are given a <strong>0-indexed</strong> <code>m x n</code> binary matrix <code>grid</code>.</p>
 
 <p>A <strong>0-indexed</strong> <code>m x n</code> difference matrix <code>diff</code> is created with the following procedure:</p>
 
@@ -14,8 +14,9 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<img src="https://assets.leetcode.com/uploads/2022/11/06/image-20221106171729-5.png" style="width: 400px; height: 208px;">
-<pre><strong>Input:</strong> grid = [[0,1,1],[1,0,1],[0,0,1]]
+<img src="https://assets.leetcode.com/uploads/2022/11/06/image-20221106171729-5.png" style="width: 400px; height: 208px;" />
+<pre>
+<strong>Input:</strong> grid = [[0,1,1],[1,0,1],[0,0,1]]
 <strong>Output:</strong> [[0,0,4],[0,0,4],[-2,-2,2]]
 <strong>Explanation:</strong>
 - diff[0][0] = <code>onesRow<sub>0</sub> + onesCol<sub>0</sub> - zerosRow<sub>0</sub> - zerosCol<sub>0</sub></code> = 2 + 1 - 1 - 2 = 0 
@@ -30,8 +31,9 @@
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
-<img src="https://assets.leetcode.com/uploads/2022/11/06/image-20221106171747-6.png" style="width: 358px; height: 150px;">
-<pre><strong>Input:</strong> grid = [[1,1,1],[1,1,1]]
+<img src="https://assets.leetcode.com/uploads/2022/11/06/image-20221106171747-6.png" style="width: 358px; height: 150px;" />
+<pre>
+<strong>Input:</strong> grid = [[1,1,1],[1,1,1]]
 <strong>Output:</strong> [[5,5,5],[5,5,5]]
 <strong>Explanation:</strong>
 - diff[0][0] = onesRow<sub>0</sub> + onesCol<sub>0</sub> - zerosRow<sub>0</sub> - zerosCol<sub>0</sub> = 3 + 2 - 0 - 0 = 5
@@ -52,4 +54,3 @@
 	<li><code>1 &lt;= m * n &lt;= 10<sup>5</sup></code></li>
 	<li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
-</div>

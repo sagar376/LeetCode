@@ -1,31 +1,38 @@
+import java.util.Stack;
+
 class Solution {
     public String removeKdigits(String num, int k) {
         if (num.length() == k)
             return "0";
 
-        StringBuilder sb = new StringBuilder(num);
-
-        /*We will iterate the number k times. In each iteration:
-        1. Remove the digit for which the next digit is smaller.
-        2. If we reach at the end than remove last digit.*/
-        for (int j = 0; j < k; j++) {
-            int i = 0;
-            while (i < sb.length() - 1 && sb.charAt(i) <= sb.charAt(i + 1)) {
-                i++;
+        Stack<Character> stack = new Stack<>();
+        // Iterate over the characters of the input string
+        for (char digit : num.toCharArray()) {
+            // Remove digits from the stack as long as the current digit is smaller and k > 0
+            while (!stack.isEmpty() && k > 0 && stack.peek() > digit) {
+                stack.pop();
+                k--;
             }
-            sb.delete(i, i + 1);
+            stack.push(digit);
         }
 
-        //remove leading 0's
-        while (sb.length() > 1 && sb.charAt(0) == '0')
-            sb.delete(0, 1);
+        // Remove remaining digits from the end of the stack if k > 0
+        while (k > 0) {
+            stack.pop();
+            k--;
+        }
 
-        if (sb.length() == 0) {
-            return "0";
+        // Construct the result string from the remaining digits in the stack
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.insert(0, stack.pop()); // Insert at the beginning to maintain the correct order
+        }
+
+        // Remove leading 0's
+        while (sb.length() > 1 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
         }
 
         return sb.toString();
     }
-   }
-    
-    
+}

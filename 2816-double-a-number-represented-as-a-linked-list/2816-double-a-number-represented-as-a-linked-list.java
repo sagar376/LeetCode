@@ -10,54 +10,76 @@
  */
 class Solution {
     public ListNode doubleIt(ListNode head) {
+        ListNode head1=new ListNode(0);
+        head1.next=head;
 
-        ListNode prev=reverseList(head);
+        ListNode left=head1;
+        ListNode right=head;
 
-        ListNode dummy=prev;
-        ListNode newHead=null;
-        int carry=0;
-        while(dummy!=null)
+        while(right!=null)
         {
-            int newValue=dummy.val*2+carry;
-            dummy.val=newValue%10;
-
-            carry=newValue>9?1:0;
-
-            newHead=dummy;
-            dummy=dummy.next;
+            int val=right.val*2;
+            if(val>9)
+            {
+                left.val+=val/10;
+            }
+            right.val=val%10;
+            right=right.next;
+            left=left.next;
         }
 
-        if(carry!=0)
-        {
-            ListNode extraNode=new ListNode(carry);
-            newHead.next=extraNode;
-        }
+        return head1.val==0?head:head1;
+
+    }
+}
+
+//         ListNode prev=reverseList(head);
+
+//         ListNode dummy=prev;
+//         ListNode newHead=null;
+//         int carry=0;
+//         while(dummy!=null)
+//         {
+//             int newValue=dummy.val*2+carry;
+//             dummy.val=newValue%10;
+
+//             carry=newValue>9?1:0;
+
+//             newHead=dummy;
+//             dummy=dummy.next;
+//         }
+
+//         if(carry!=0)
+//         {
+//             ListNode extraNode=new ListNode(carry);
+//             newHead.next=extraNode;
+//         }
 
 
-        return reverseList(prev);
+//         return reverseList(prev);
 
 
 
 
         
-    }
+//     }
 
 
-    private ListNode reverseList(ListNode node)
-    {
-        ListNode curr=node;
-        ListNode prev=null;
-        ListNode next=null;
+//     private ListNode reverseList(ListNode node)
+//     {
+//         ListNode curr=node;
+//         ListNode prev=null;
+//         ListNode next=null;
 
-        while(curr!=null)
-        {
-            next=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=next;
-        }
+//         while(curr!=null)
+//         {
+//             next=curr.next;
+//             curr.next=prev;
+//             prev=curr;
+//             curr=next;
+//         }
 
-        return prev;
+//         return prev;
 
-    }
-}
+//     }
+// }

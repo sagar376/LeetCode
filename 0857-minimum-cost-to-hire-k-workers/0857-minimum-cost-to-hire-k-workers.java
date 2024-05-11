@@ -1,57 +1,42 @@
+// Approach-3 (Optimal)
+// T.C : O(nlogn + klogk + n*log(k))
+// S.C : O(n+k)
 class Solution {
-    public double mincostToHireWorkers(int[] quality, int[] wage, int k) {
+    public double mincostToHireWorkers(int[] quality, int[] min_wage, int k) {
+        int n = quality.length;
 
-        /* https://www.youtube.com/watch?v=kxR52OB_I8k 
-        Refer above video for complete understanding */ 
+        // Calculate the wage-to-quality ratio for each worker and store in a pair
+        double[][] worker_ratio = new double[n][2];
+        for (int worker = 0; worker < n; worker++) {
+            worker_ratio[worker][0] = (double) min_wage[worker] / quality[worker];
+            worker_ratio[worker][1] = quality[worker];
+        }
+        // Sort the workers based on their wage-to-quality ratio
+        Arrays.sort(worker_ratio, (a, b) -> Double.compare(a[0], b[0]));
 
-        int n=quality.length;
-
-        double[][] workerRatio=new double[n][2];
-
-        for(int i=0;i<n;i++)
-        {
-            workerRatio[i][0]=(double)wage[i]/quality[i];
-            workerRatio[i][1]=quality[i];
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        double sum_quality = 0;
+        for (int i = 0; i < k; i++) {
+            pq.offer((int) worker_ratio[i][1]); // Push all qualities in max-heap
+            sum_quality += worker_ratio[i][1]; // Find sum of qualities
         }
 
-        Arrays.sort(workerRatio,(a,b) -> Double.compare(a[0],b[0]));
+        double managerRatio = worker_ratio[k - 1][0];
+        double result = managerRatio * sum_quality;
 
-        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
+        for (int manager = k; manager < n; manager++) {
+            managerRatio = worker_ratio[manager][0];
 
-        double qualitySum=0;
+            pq.offer((int) worker_ratio[manager][1]); // Push all qualities in max-heap
+            sum_quality += worker_ratio[manager][1]; // Find sum of qualities
 
-
-        for(int i=0;i<k;i++)
-        {
-            qualitySum+=workerRatio[i][1];
-            pq.offer((int)workerRatio[i][1]);
-        }
-
-        double managerRatio=workerRatio[k-1][0];
-        double result = managerRatio * qualitySum;
-
-        for(int i=k;i<n;i++)
-        {
-            managerRatio = workerRatio[i][0];
-
-            pq.offer((int)workerRatio[i][1]);
-            qualitySum+=workerRatio[i][1];
-
-            if(pq.size() > k)
-            {
-                qualitySum-=pq.poll();
+            if (pq.size() > k) {
+                sum_quality -= pq.poll();
             }
 
-            result = Math.min( result, managerRatio * qualitySum);
-
-
+            result = Math.min(result, managerRatio * sum_quality);
         }
 
         return result;
-
-        
-
-
-        
     }
 }

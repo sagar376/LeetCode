@@ -19,21 +19,28 @@ class Solution {
 
         for (int i = 1; i < m; i++) {
             if (countOnes(0, i, temp)) {
-                System.out.println("column " + i);
                 temp = flipCol(0, i, temp); // column flip
             }
         }
 
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            // Iterate over each element in the row and print it
-            int rowSum = 0;
-            for (int j = 0; j < m; j++) {
-                if (temp[i][j] == 1)
-                    rowSum += Math.pow(2, m - j - 1);
-            }
-            sum += rowSum;
+        // int sum = 0;
+        // for (int i = 0; i < n; i++) {
+        //     // Iterate over each element in the row and print it
+        //     int rowSum = 0;
+        //     for (int j = 0; j < m; j++) {
+        //         if (temp[i][j] == 1)
+        //             rowSum += Math.pow(2, m - j - 1);
+        //     }
+        //     sum += rowSum;
+        // }
+        int sum=0;
+        for(int i=0; i<n; i++){
+           int dec = 0;
+        for(int j=0; j<m; j++){
+            dec = dec*2+temp[i][j];
         }
+            sum+=dec;
+       }
 
         return sum;
 

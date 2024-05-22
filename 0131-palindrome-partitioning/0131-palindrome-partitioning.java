@@ -1,35 +1,37 @@
 class Solution {
     public List<List<String>> partition(String s) {
-        
-        int length=s.length();
-        List<List<String>> ans=new ArrayList<>();
-        List<String> path=new ArrayList<>();
-        
-        solve(0,path,s,ans,length);
-        return ans;
+
+        List<List<String>> result=new ArrayList<>();
+        List<String> currentString=new ArrayList<>();
+    
+
+        solve(0,s,result,currentString);
+        return result;
         
     }
-    
-    public void solve(int index,List<String> path,String s,List<List<String>> ans,int n)
+
+    private void solve(int index,String s,List<List<String>> result,List<String> currentString)
     {
-        if(index==n)
+        if(index==s.length())
         {
-            ans.add(new ArrayList<>(path));
+            result.add(new ArrayList<>(currentString));
             return;
         }
-        
-        for(int i=index;i<n;i++)
+
+        for(int i=index;i<s.length();i++)
         {
-            if(palindrome(s,index,i))
+            if(checkPalindrome(s.substring(index,i+1)))
             {
-                path.add(s.substring(index,i+1));
-                solve(i+1,path,s,ans,n);
-                path.remove(path.size()-1);
+                currentString.add(s.substring(index,i+1));
+                solve(i+1,s,result,currentString);
+                currentString.remove(currentString.size()-1);
             }
         }
     }
-    boolean palindrome(String s,int start,int end)
+
+    private boolean checkPalindrome(String s)
     {
+        int start=0,end=s.length()-1;
         while(start<=end)
         {
             if(s.charAt(start)!=s.charAt(end))

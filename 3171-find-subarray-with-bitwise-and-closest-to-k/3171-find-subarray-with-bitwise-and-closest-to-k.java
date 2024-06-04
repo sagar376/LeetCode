@@ -1,4 +1,7 @@
 class Solution {
+
+
+    // https://www.youtube.com/watch?v=BWBKtU8Euno
     public int minimumDifference(int[] nums, int k) {
 
         int AND=nums[0];

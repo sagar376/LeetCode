@@ -1,60 +1,32 @@
 class Solution {
     public int subarraysDivByK(int[] nums, int k) {
 
-    //     HashMap<Integer,List<Integer>> modSeen=new HashMap<>();
+        int n = nums.length;
+        int prefixMod = 0, result = 0;
 
-    //     modSeen.put(0,new ArrayList<>(Arrays.asList(-1)));
+        // There are k mod groups 0...k-1.
+        int[] modGroups = new int[k];
+        modGroups[0] = 1;
 
-    //     int modPrefix=0;
+        int sum=0;
+        int rem=0;
 
-    //     for(int i=0;i<nums.length;i++)
-    //     {
-    //         modPrefix= (modPrefix+nums[i])%k;
+        for(int num:nums)
+        {
+            sum+=num;
 
-    //         if(modSeen.containsKey(modPrefix))
-    //         {
-    //             List temp=modSeen.get(modPrefix);
-    //             temp.add(i);
-    //         }
-    //         else
-    //         {
-    //             modSeen.put(modPrefix,new ArrayList<>(Arrays.asList(i)));
-    //         }
-    //     }
+            rem = sum % k;
 
-    //     int total=0;
-    //     for(List<Integer> temp:modSeen.values())
-    //     {
-    //         int size=temp.size();
-    //         if(size > 1)
-    //         {
-    //             total += fact(size);
-    //         }
-    //     }
-
-
-    //     return total;
-        
-    // }
-
-    // private int fact(int n)
-    // {
-    //     if(n==1)
-    //     return 1;
-
-    //     return fact(n) + fact(n-1);
-
-        int result=0;
-
-        for(int i=0;i<nums.length;i++)
-        {   
-            int sum=0;
-            for(int j=i;j<nums.length;j++)
+            if(rem < 0)
             {
-                sum+=nums[j];
-                if(sum%k==0)
-                result++;
+                rem+=k;  // check CodeStorywithMik for explaination
             }
+
+            result+=modGroups[rem];
+            // Add the count of subarrays that have the same remainder as the current
+            // one to cancel out the remainders
+            modGroups[rem]++;
+
         }
 
         return result;

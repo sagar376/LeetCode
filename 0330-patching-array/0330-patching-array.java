@@ -3,7 +3,7 @@ class Solution {
 
         int size=nums.length;
         int i=0;
-        int maxReach=0;
+        long maxReach=0;
         int patch=0;
 
         while(maxReach<n)
@@ -15,7 +15,7 @@ class Solution {
             }
             else
             {
-                maxReach+=maxReach+1;
+                maxReach+=(maxReach+1);
                 patch++;
             }
         }

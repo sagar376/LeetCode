@@ -6,7 +6,10 @@ class Solution {
 
         while(start<=end)
         {
-            long value=(int)Math.pow(start,2)+(int)Math.pow(end,2);
+            long value=(long)Math.pow(start,2)+(long)Math.pow(end,2);
+
+
+            System.out.println(value);
 
             if(value==c)
             return true;

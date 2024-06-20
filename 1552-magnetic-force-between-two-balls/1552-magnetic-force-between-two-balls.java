@@ -9,7 +9,7 @@ class Solution {
         int maxDistance=0;
         while(minForce<=maxForce){
             int midForce=minForce + (maxForce - minForce)/2;
-            System.out.println(midForce);
+            
             if(possibleToPlace(midForce, position,m))
             {
                 maxDistance = midForce;
@@ -39,10 +39,10 @@ class Solution {
 
             if(countBalls == balls)
             {
-                break;
+                return true;
             }
         }
 
-        return countBalls == balls;
+        return false;
     }
 }

@@ -4,12 +4,14 @@ class Solution {
         Arrays.sort(position);
         // int minForce=position[0];// check this went wrong here
         int minForce=1;
-        int maxForce=position[position.length-1];
+        //int maxForce=position[position.length-1]; /// alternative approach
+         
+        int maxForce = position[position.length-1]-position[0]/(m-1); // explaination is maxDistance for 1 ball / maxDistance of (m-1) gaps
 
         int maxDistance=0;
         while(minForce<=maxForce){
             int midForce=minForce + (maxForce - minForce)/2;
-            
+
             if(possibleToPlace(midForce, position,m))
             {
                 maxDistance = midForce;

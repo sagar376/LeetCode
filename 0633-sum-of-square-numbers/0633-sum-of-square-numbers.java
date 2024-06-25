@@ -1,32 +1,27 @@
 class Solution {
     public boolean judgeSquareSum(int c) {
 
-        int start=0;
-        int end=(int)Math.sqrt(c);
+     int start=0;
+     int end=(int)Math.sqrt(c);
 
-        while(start<=end)
+     while(start<=end)
+     {
+        long value=(start*start) + (end * end);
+
+        if(value>c)
         {
-            long value=(long)Math.pow(start,2)+(long)Math.pow(end,2);
-
-
-            System.out.println(value);
-
-            if(value==c)
-            return true;
-
-            else if(value > c)
-            {
-                end--;
-            }
-
-            else
-            {
-                start++;
-            }
+            end--;
         }
-
-
-        return false;
+        else if(value<c)
+        {
+            start++;
+        }
+        else
+        {
+           return true;
+        }
+     }
+     return false;
 
         
     }

@@ -1,53 +1,31 @@
-// class Solution {
-//     public long maximumImportance(int n, int[][] roads) {
-//         int row=roads.length;
-//         int col=roads[0].length;
-//         int[] degree=new int[n];
+class Solution {
+    public long maximumImportance(int n, int[][] roads) {
+        int row=roads.length;
+        int col=roads[0].length;
+        int[] degree=new int[n];
 
-//         for(int i=0;i<row;i++)
-//         {
-//             for(int j=0;j<col;j++)
-//             {
-//                 degree[roads[i][j]]++;
-//             }
-//         }
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                degree[roads[i][j]]++;
+            }
+        }
 
-//         Arrays.sort(degree);
+        Arrays.sort(degree);
 
-//         long totalImportance=0;
-//         int value=1;
+        long totalImportance=0;
+        int value=1;
 
-//         for(int num:degree)
-//         {
-//             totalImportance+=(long)num*value;
-//             value++;
-//         }
+        for(int num:degree)
+        {
+            totalImportance+=(long)num*value;
+            value++;
+        }
 
-//         return totalImportance ;
+        return totalImportance ;
 
 
         
-//     }
-// }
-
-class Solution {
-    public long maximumImportance(int n, int[][] roads) {
-        int[] br = new int[n];
-        for(int[] r : roads){
-            br[r[0]]++;
-            br[r[1]]++;
-        }
-        int[] cnt = new int[n];
-        for(int b : br){
-            cnt[b]++;
-        }
-        long sum = 0;
-        long val = 1;
-        for(long i = 0; i < n; i++){
-            for(int j = 0; j < cnt[(int)i]; j++){
-                sum += i*val++;
-            }
-        }
-        return sum;
     }
 }

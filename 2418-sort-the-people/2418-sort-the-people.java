@@ -19,7 +19,12 @@ class Solution {
 
         PriorityQueue<Person> pq = new PriorityQueue<>((a,b)-> b.height-a.height);
 
-        pq.addAll(Arrays.asList(person));
+        // pq.addAll(Arrays.asList(person));
+
+        // Add all Person objects to the PriorityQueue
+        for (Person person : persons) {
+            pq.add(person);
+        }
 
         String[] result = new String[names.length];
         int index = 0;

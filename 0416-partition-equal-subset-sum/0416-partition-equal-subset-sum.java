@@ -13,17 +13,19 @@ class Solution {
 
         int k = totSum/2;
         boolean[] prev = new boolean[k + 1];
-        boolean[] curr = new boolean[k + 1];
+        // boolean[] curr = new boolean[k + 1];
 
         
 
         prev[0] = true;
-        curr[0] = true;
+        // curr[0] = true;
 
         if(nums[0] == k) prev[nums[0]] = true;
 
         for(int ind = 1; ind < nums.length; ind++)
         {
+            boolean[] curr = new boolean[k + 1];
+            curr[0] = true;
             for(int target = 1 ; target <= k ; target++)
             {
                 boolean notTake = prev[target];
@@ -35,7 +37,8 @@ class Solution {
                 //System.out.println(Arrays.toString(prev));
                 
             }
-            prev = Arrays.copyOf(curr, curr.length);
+            // prev = Arrays.copyOf(curr, curr.length);
+            prev = curr;
         }
 
         return prev[k];  

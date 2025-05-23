@@ -2,7 +2,7 @@ class Solution {
     public long maximumValueSum(int[] nums, int k, int[][] edges) {
 
         int count=0;
-        long sum=0;
+        int sum=0;
         int min_nuksaan=Integer.MAX_VALUE;
         for(int num:nums)
         {
